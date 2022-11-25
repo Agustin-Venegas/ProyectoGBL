@@ -33,4 +33,12 @@ public class Elemento : MonoBehaviour
     {
         
     }
+
+    public void OnMouseDown()
+    {
+        if (!Scene.Instance.playing)
+        {
+            Scene.Instance.UI.Select(this);
+        }
+    }
 }

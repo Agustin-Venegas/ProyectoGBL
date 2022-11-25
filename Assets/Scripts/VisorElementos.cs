@@ -7,6 +7,13 @@ using UnityEngine;
 //y mostrarlos en un elemento estilo scrollbar
 public class VisorElementos : MonoBehaviour
 {
+    [Header("Partes")]
+    public GameObject ButtonPrefab;
+    public GameObject Canvas;
+
+
+    //elemento seleccionado
+    Elemento Selected;
 
     void Start()
     {
@@ -16,6 +23,15 @@ public class VisorElementos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //eventos de mouse izquierdo (click)
+        if (Input.GetMouseButtonDown(0))
+        {
+
+        }
+    }
+
+    public void Select(Elemento e)
+    {
+        Selected = e;
     }
 }

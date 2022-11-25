@@ -15,8 +15,14 @@ public class Scene : MonoBehaviour
 
     public static Scene Instance;
 
+    [Header("PrefabsPuestos")]
     public List<ElementInstances> elements;
     List<ElementInstances> instancedElements; // esta trackea los objetos a spawnear y resetear
+
+    [Header("Partes")]
+    public VisorElementos UI;
+
+    public bool playing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +43,14 @@ public class Scene : MonoBehaviour
     public void StartSimulation()
     {
         Time.timeScale = 1.0f;
+        playing = true;
     }
 
     //esta funcion debe desespawnear y respawnear los objetos en las listas
     public void RestartSimulation()
     {
-
+        playing = false;
+        Time.timeScale = 0f;
     }
 
     // Update is called once per frame
