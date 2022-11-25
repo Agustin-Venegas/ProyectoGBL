@@ -8,7 +8,6 @@ using UnityEngine;
 public class VisorElementos : MonoBehaviour
 {
 
-
     void Start()
     {
         
