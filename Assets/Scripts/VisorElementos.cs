@@ -5,7 +5,6 @@ using UnityEngine;
 
 //esta clase se encarga de obtener todos los elementos de un JSON
 //y mostrarlos en un elemento estilo scrollbar
-
 public class VisorElementos : MonoBehaviour
 {
 

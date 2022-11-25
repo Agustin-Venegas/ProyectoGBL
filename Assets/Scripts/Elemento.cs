@@ -11,6 +11,17 @@ using UnityEngine;
 public class Elemento : MonoBehaviour
 {
 
+    [Header("Partes")]
+    public GameObject Activado; //elemento a activar cuando se active
+    public float EnergiaActivacion; //valor energía de activacion
+
+
+    //esta funcion setea las variables del Patron en este objeto
+    public void SetElementInfo(ElementInfo patron)
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
