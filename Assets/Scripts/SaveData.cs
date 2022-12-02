@@ -13,29 +13,46 @@ public class SaveData : MonoBehaviour
 
         if (!File.Exists(path))
         {
-            File.WriteAllText(path, "SavedGameData \n\n");
+            //File.WriteAllText(path, "SavedGameData \n\n");
         }
     }
 
     public void Start()
     {
         CreateDataFile();
-        SaveInfo("Pichula" +
-            " wena conchetumare" +
-            " probando probando");
+       
+        SaveInfo(" a"," b"," c"," d");
         LoadInfo();
     }
 
-    public void SaveInfo(string infoToSave)
+    public void SaveInfo(string A, string B, string C, string D)
     {
-        File.AppendAllText(path, infoToSave);
+        List<string> infoSave = new List<string>();
+        infoSave.Add(A);
+        infoSave.Add(B);
+        infoSave.Add(C);
+        infoSave.Add(D);
+        File.WriteAllLines(path,infoSave);
+
     }
 
     public void LoadInfo()
     {
         StreamReader reader = new StreamReader(path);
-        Debug.Log(reader.ReadToEnd());
+        string LoadedInfo = reader.ReadToEnd();
+        var SplitInfo = LoadedInfo.Split(' ');
+
+        foreach(var Info in SplitInfo)
+        {
+            Debug.Log(Info);
+        }
+
         reader.Close();
+    }
+
+    public void DeleteInfo()
+    {
+        File.Delete(path);
     }
 
 }
