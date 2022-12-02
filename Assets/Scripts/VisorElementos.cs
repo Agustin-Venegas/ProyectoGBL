@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//esta clase se encarga de obtener todos los elementos de un JSON
+//esta clase se encarga de obtener todos los elementos de un JSON o algo
 //y mostrarlos en un elemento estilo scrollbar
+//2 de diciembre: no me gusta pero podemos usar scriptable objects :c
+
 public class VisorElementos : MonoBehaviour
 {
     [Header("Partes")]
@@ -26,7 +28,7 @@ public class VisorElementos : MonoBehaviour
         //eventos de mouse izquierdo (click)
         if (Input.GetMouseButtonDown(0))
         {
-
+                
         }
     }
 

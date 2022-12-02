@@ -12,7 +12,7 @@ public class Elemento : MonoBehaviour
 {
 
     [Header("Partes")]
-    public GameObject Activado; //elemento a activar cuando se active
+    public GameObject Activado; //elemento a activar cuando se active, en caso de ser un boton
     public float EnergiaActivacion; //valor energía de activacion
 
 
@@ -36,7 +36,7 @@ public class Elemento : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (!Scene.Instance.playing)
+        if (Scene.Instance.editing)
         {
             Scene.Instance.UI.Select(this);
         }
