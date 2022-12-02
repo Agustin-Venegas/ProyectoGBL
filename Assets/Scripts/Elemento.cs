@@ -38,7 +38,7 @@ public class Elemento : MonoBehaviour
     {
         if (Scene.Instance.editing)
         {
-            Scene.Instance.UI.Select(this);
+            Scene.Instance.UI.Select(this.gameObject);
         }
     }
 }

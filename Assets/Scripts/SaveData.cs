@@ -5,15 +5,31 @@ using System.IO;
 
 public class SaveData : MonoBehaviour
 {
+    public string FileName; //nombre
+
     string path;
+
+    public static SaveData Instance; //guarda la instancia actual, puede haber problemas si no esta disponible
+
+    public string ToJson(object o)
+    {
+        return JsonUtility.ToJson(o);
+    }
 
     public void CreateDataFile()
     {
-        path = Application.dataPath + "/saveGameData.txt";
+        if (FileName.Length > 1)
+        {
+            path = Application.dataPath + "/" + FileName + ".txt";
+        }
+        else
+        {
+            path = Application.dataPath + "/saveGameData.txt";
+        }
 
         if (!File.Exists(path))
         {
-            //File.WriteAllText(path, "SavedGameData \n\n");
+            File.WriteAllText(path, "SavedGameData \n\n");
         }
     }
 

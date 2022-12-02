@@ -45,6 +45,11 @@ public class Scene : MonoBehaviour
         Time.timeScale = 0;
 
         instancedElements = new List<GameObject>();
+
+        instancedElements.Add(Instantiate(Inicio.gameObject));
+        instancedElements.Add(Instantiate(Fin.gameObject));
+        Inicio.gameObject.SetActive(false);
+        Fin.gameObject.SetActive(false);
     }
 
     //esta funcion comienza la simulacion, poniendole pley a la cosa, solo si no ha empezado
@@ -52,19 +57,6 @@ public class Scene : MonoBehaviour
     {
         if (!playing)
         {
-            instancedElements.Add(Instantiate(Inicio.gameObject));
-            instancedElements.Add(Instantiate(Fin.gameObject));
-            Inicio.gameObject.SetActive(false);
-            Fin.gameObject.SetActive(false);
-
-            foreach (ElementInstances e in elements)
-            {
-                GameObject g = Instantiate(e.Spawnable.prefab);
-                instancedElements.Add(g);
-                g.transform.position = e.pos;
-
-                e.Spawnable.prefab.SetActive(false);
-            }
 
             Time.timeScale = 1.0f;
             playing = true;
@@ -99,26 +91,40 @@ public class Scene : MonoBehaviour
 
             foreach (ElementInstances e in elements)
             {
-                e.Spawnable.prefab.SetActive(true);
+                GameObject g = Instantiate(e.Spawnable.prefab);
+                g.transform.position = e.pos;
+                instancedElements.Add(g);
             }
 
             Inicio.gameObject.SetActive(true);
             Fin.gameObject.SetActive(true);
+            instancedElements.Add(Instantiate(Inicio.gameObject));
+            instancedElements.Add(Instantiate(Fin.gameObject));
+            Inicio.gameObject.SetActive(false);
+            Fin.gameObject.SetActive(false);
         }
     }
 
     //Pone un elemento a spawnear, con la informacion correspondiente
     public void AddElement(ElementInfo e, Vector2 p)
     {
-        GameObject g = Instantiate(e.prefab);
-        g.transform.position = p;
+        //GameObject g = Instantiate(e.prefab);
+        //g.transform.position = p;
 
         ElementInstances i = new ElementInstances();
-        ElementInfo newElementInfo = new ElementInfo();
-        newElementInfo.prefab = g;
+        //ElementInfo newElementInfo = new ElementInfo();
+        //newElementInfo.prefab = g;
 
-        i.Spawnable = newElementInfo;
+        //i.Spawnable = newElementInfo;
+        i.Spawnable = e;
         i.pos = p;
+
+        elements.Add(i);
+
+        GameObject g = Instantiate(i.Spawnable.prefab);
+        g.transform.position = p;
+        //g.SetActive(false);
+        instancedElements.Add(g);
     }
 
     //busca y elimina un elemento a spawnear
