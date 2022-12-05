@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3341785577421136838}
   - component: {fileID: 3341785577421136839}
   - component: {fileID: 3341785577421136836}
+  - component: {fileID: 8539176636295711447}
   m_Layer: 0
   m_Name: circle
-  m_TagString: Untagged
+  m_TagString: Elemento
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a8378d52fc55df04dbede4059bde1d3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c3b34c6685c2dd4ba6362ce5a5549fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Activado: {fileID: 0}
   EnergiaActivacion: 0
+  Seleccionable: 1
 --- !u!50 &3341785577421136839
 Rigidbody2D:
   serializedVersion: 4
@@ -132,6 +134,20 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0041888356}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.9105007
+--- !u!114 &8539176636295711447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341785577421136837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869c6280da4574b4bad05b20e391ffed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelModifier: {fileID: 0}
+  isSelected: 0
