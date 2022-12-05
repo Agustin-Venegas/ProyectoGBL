@@ -12,9 +12,11 @@ public class Elemento : MonoBehaviour
 {
 
     [Header("Partes")]
-    public GameObject Activado; //elemento a activar cuando se active, en caso de ser un boton
+    public GameObject Activado; //elemento a activar cuando se active, en caso de ser un boton, por ejemplo
     public float EnergiaActivacion; //valor energía de activacion
 
+    [Header("Vars")]
+    public bool Seleccionable = true;
 
     //esta funcion setea las variables del Patron en este objeto
     public void SetElementInfo(ElementInfo patron)

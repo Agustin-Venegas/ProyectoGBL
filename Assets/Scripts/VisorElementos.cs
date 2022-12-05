@@ -37,12 +37,13 @@ public class VisorElementos : MonoBehaviour
         Vector2 p = Camera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 
         //eventos de mouse izquierdo (click)
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
 
             if (Selected != null)
             {
                 Selected.transform.position = p;
+                Selected = null;
             }
 
             if (ToSpawn.Name != null)

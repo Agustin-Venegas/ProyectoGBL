@@ -108,14 +108,8 @@ public class Scene : MonoBehaviour
     //Pone un elemento a spawnear, con la informacion correspondiente
     public void AddElement(ElementInfo e, Vector2 p)
     {
-        //GameObject g = Instantiate(e.prefab);
-        //g.transform.position = p;
 
         ElementInstances i = new ElementInstances();
-        //ElementInfo newElementInfo = new ElementInfo();
-        //newElementInfo.prefab = g;
-
-        //i.Spawnable = newElementInfo;
         i.Spawnable = e;
         i.pos = p;
 
@@ -123,7 +117,6 @@ public class Scene : MonoBehaviour
 
         GameObject g = Instantiate(i.Spawnable.prefab);
         g.transform.position = p;
-        //g.SetActive(false);
         instancedElements.Add(g);
     }
 
