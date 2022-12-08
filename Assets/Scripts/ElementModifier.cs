@@ -10,19 +10,6 @@ public class ElementModifier : MonoBehaviour
     GameObject RotateSlider;
 
     public bool isSelected;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //panelModifier = GameObject.FindGameObjectWithTag("PanelModifier");
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public void OnMouseDown()
     {

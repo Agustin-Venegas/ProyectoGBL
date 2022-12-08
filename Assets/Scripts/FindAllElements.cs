@@ -11,8 +11,6 @@ public class FindAllElements : MonoBehaviour
         panelMod.SetActive(false);
     }
 
-    //GameObject elementSelected[];
-
     public void FindSelectedElement()
     {
         var elementSelected = GameObject.FindGameObjectsWithTag("Elemento");
