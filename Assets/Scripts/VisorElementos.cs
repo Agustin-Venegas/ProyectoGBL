@@ -37,12 +37,13 @@ public class VisorElementos : MonoBehaviour
         Vector2 p = Camera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 
         //eventos de mouse izquierdo (click)
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
 
             if (Selected != null)
             {
                 Selected.transform.position = p;
+                Scene.Instance.UpdateElement(Selected);
                 Selected = null;
             }
 
@@ -61,6 +62,9 @@ public class VisorElementos : MonoBehaviour
     //selecciona un objeto ya puesto para moverlo,
     public void Select(GameObject e)
     {
+        //no seleccionar si es el inicio
+        if (e == Scene.Instance.Fin.gameObject || e == Scene.Instance.Inicio.gameObject) return;
+        
         Selected = e;
 
         ToSpawn = new ElementInfo(); //esto deberia borrar

@@ -10,7 +10,11 @@ public class Scene : MonoBehaviour
     public class ElementInstances
     {
         public ElementInfo Spawnable;
+        public GameObject instance;
+
         public Vector2 pos;
+        public float rot;
+        public Vector2 scale;
     }
 
     public static Scene Instance;
@@ -91,9 +95,12 @@ public class Scene : MonoBehaviour
 
             foreach (ElementInstances e in elements)
             {
-                GameObject g = Instantiate(e.Spawnable.prefab);
-                g.transform.position = e.pos;
-                instancedElements.Add(g);
+                e.instance = Instantiate(e.Spawnable.prefab);
+                e.instance.transform.position = e.pos;
+                e.instance.transform.Rotate(new Vector3(0,0,e.rot));
+                e.instance.transform.localScale = e.scale;
+
+                instancedElements.Add(e.instance);
             }
 
             Inicio.gameObject.SetActive(true);
@@ -115,9 +122,9 @@ public class Scene : MonoBehaviour
 
         elements.Add(i);
 
-        GameObject g = Instantiate(i.Spawnable.prefab);
-        g.transform.position = p;
-        instancedElements.Add(g);
+        i.instance = Instantiate(i.Spawnable.prefab);
+        i.instance.transform.position = p;
+        instancedElements.Add(i.instance);
     }
 
     //busca y elimina un elemento a spawnear
@@ -131,6 +138,22 @@ public class Scene : MonoBehaviour
             {
                 Destroy(g);
                 elements.RemoveAt(i);
+
+                break;
+            }
+        }
+    }
+
+    //actualizar
+    public void UpdateElement(GameObject g)
+    {
+        foreach (ElementInstances e in elements)
+        {
+            if (e.instance == g)
+            {
+                e.pos = g.transform.position;
+                e.rot = g.transform.rotation.eulerAngles.z;
+                e.scale = g.transform.localScale;
 
                 break;
             }

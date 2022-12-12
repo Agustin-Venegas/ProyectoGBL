@@ -23,6 +23,8 @@ public class Dialog : MonoBehaviour
     int index = 0;
     bool stopped = false;
 
+    float timer = 5;
+
 
     Coroutine run;
 
@@ -32,7 +34,10 @@ public class Dialog : MonoBehaviour
 
         foreach (char c in Sentences[index].ToCharArray())
         {
-            if (!stopped) disp.text += c;
+            if (!stopped)
+            {
+                disp.text += c;
+            }
             yield return new WaitForSeconds(CharSpeed);
         }
     }
@@ -47,6 +52,11 @@ public class Dialog : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+        if (stopped)
+        {
+            timer -= Time.deltaTime;
+
+        }
     }
 
     void OnEnable()
@@ -80,4 +90,4 @@ public class Dialog : MonoBehaviour
             disp.text = Sentences[index];
         }
     }
-}
+}   

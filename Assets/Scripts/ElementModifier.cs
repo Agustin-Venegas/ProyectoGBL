@@ -13,19 +13,25 @@ public class ElementModifier : MonoBehaviour
 
     public void OnMouseDown()
     {
-        panelModifier = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FindAllElements>().panelMod;
-        panelModifier.SetActive(true);
-        ScaleSlider = GameObject.FindGameObjectWithTag("ScaleSlider");
-        RotateSlider = GameObject.FindGameObjectWithTag("RotateSlider");
-
-        isSelected = true;
-        if (this.gameObject.GetComponent<Elemento>())
+        if (Scene.Instance.editing)
         {
-            Debug.Log("HasElement");
-        }
+            //no seleccionar si es el inicio
+            if (gameObject == Scene.Instance.Fin.gameObject || gameObject == Scene.Instance.Inicio.gameObject) return;
 
-        ScaleSlider.GetComponent<Slider>().value = this.gameObject.transform.localScale.x;
-        RotateSlider.GetComponent<Slider>().value = this.gameObject.transform.rotation.z;
+            panelModifier = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FindAllElements>().panelMod;
+            panelModifier.SetActive(true);
+            ScaleSlider = GameObject.FindGameObjectWithTag("ScaleSlider");
+            RotateSlider = GameObject.FindGameObjectWithTag("RotateSlider");
+
+            isSelected = true;
+            if (this.gameObject.GetComponent<Elemento>())
+            {
+                Debug.Log("HasElement");
+            }
+
+            ScaleSlider.GetComponent<Slider>().value = this.gameObject.transform.localScale.x;
+            RotateSlider.GetComponent<Slider>().value = this.gameObject.transform.rotation.z;
+        }
     }
 
     public void SaveElementModification()
@@ -33,6 +39,8 @@ public class ElementModifier : MonoBehaviour
 
         this.gameObject.transform.localScale = new Vector3(ScaleSlider.GetComponent<Slider>().value, ScaleSlider.GetComponent<Slider>().value, ScaleSlider.GetComponent<Slider>().value);
         this.gameObject.transform.rotation = new Quaternion(0, 0, RotateSlider.GetComponent<Slider>().value, 0);
+
+        Scene.Instance.UpdateElement(gameObject);
     }
 
 

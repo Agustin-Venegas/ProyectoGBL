@@ -14,6 +14,7 @@ public class Elemento : MonoBehaviour
     [Header("Partes")]
     public GameObject Activado; //elemento a activar cuando se active, en caso de ser un boton, por ejemplo
     public float EnergiaActivacion; //valor energía de activacion
+    public ElementModifier modifier;
 
     [Header("Vars")]
     public bool Seleccionable = true;
@@ -27,7 +28,10 @@ public class Elemento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (modifier == null)
+        {
+            modifier = GetComponent<ElementModifier>();
+        }    
     }
 
     // Update is called once per frame
@@ -36,11 +40,30 @@ public class Elemento : MonoBehaviour
         
     }
 
-    public void OnMouseDown()
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Elemento e = collision.gameObject.GetComponent<Elemento>();
+
+        if (e != null)
+        {
+
+        }
+    }
+
+    public void OnMouseUp()
     {
         if (Scene.Instance.editing)
         {
             Scene.Instance.UI.Select(this.gameObject);
         }
     }
+
+    /*public void OnMouseDrag()
+    {
+        if (Scene.Instance.editing)
+        {
+            Scene.Instance.UI.Select(this.gameObject);
+        }
+    }
+    */
 }

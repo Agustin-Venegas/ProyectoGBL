@@ -8,14 +8,6 @@ using UnityEngine;
 [Serializable]
 public struct ElementInfo
 {
-    /*public ElementInfo()
-    {
-        Name = string.Empty;
-        ActivationEnergy = 0;
-        sprite = null;
-        prefab = null;
-    }
-    */
 
     public string Name;
     public float ActivationEnergy;
